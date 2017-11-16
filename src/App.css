@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+img{
+    vertical-align: bottom;
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+}
+.clear:after{
+    clear: both;
+    visibility: hidden;
+    height: 0;
+    display: block;
+    content: '.';
+}
+.clear{
+    zoom: 1;
+}
+.float-left{
+    float: left;
+}
+.level-center {
+    margin: 0 auto;
+}
+.text-center{
+    text-align: center;
+}
+.vertical-center{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.level-vertical-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
