@@ -22,8 +22,7 @@
  3. 如何阻止事件冒泡
 
         再React中如何阻止原生事件的冒泡呢，我怎么感觉不可能，但是百度到的却可以，这是什么原理？
-
         ![运行结果][1]
 
 
-  [1]: https://github.com/1409070209/demo/blob/master/src/component/Event/DEMO.png
+  [1]: https://box.kancloud.cn/8a50c89c14fc461ec90d56efb43f6010_1204x685.png
