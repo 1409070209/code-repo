@@ -5,6 +5,9 @@ import A from "../A/A";
 import Footer from "../Footer/Footer";
 import B from "../B/B";
 
+const Router = BrowserRouter;
+
+
 class RouterView extends Component {
     componentWillUnmount(){
         console.log('RouterView组件被卸载');
@@ -12,9 +15,18 @@ class RouterView extends Component {
     }
     componentWillMount(){
         console.log('RouterView组件被装载');
+
     }
     componentDidUpdate(){
         console.log('RouterView更新');
+        // // 这个注释在使用ReactRouter包下的代码是需要启动，观察我们实现的Link是如何工作的
+        // // hashchange是否被执行就可以知道在hash模式下Link和a是没有区别的
+        // document.addEventListener('popstate',()=>{
+        //     console.log('popstate');
+        // });
+        // window.addEventListener('hashchange',()=>{
+        //     console.log('hashchange');
+        // })
     }
     componentDidMount(){
         console.log('RouterView Did mount');
@@ -38,12 +50,12 @@ class RouterView extends Component {
         return (
             <div>
                 <Header/>
-                <BrowserRouter>
+                <Router>
                     <div>
                         <Route component={A} path="/A"/>
                         <Route component={B} path="/B"/>
                     </div>
-                </BrowserRouter>
+                </Router>
                 <Footer/>
             </div>
 
