@@ -1,12 +1,18 @@
 import React, {Component} from 'react';
 import InputHoc from "../InputHOC";
+import removePropsHoc from "../removePropsHOC";
 
+const unableProps = [
+    'value',
+    'onChange',
+    'onKeyUp'
+];
 class Input extends Component {
     render() {
         return (
-            <input type="text" {...this.props}/>
+            <input {...this.props}/>
         )
     }
 }
 
-export default InputHoc(Input);
+export default InputHoc(removePropsHoc(Input , unableProps));

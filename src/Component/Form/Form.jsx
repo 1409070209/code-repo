@@ -1,14 +1,25 @@
 import React, {Component} from 'react';
+import removePropsHoc from "../removePropsHOC";
+
+const unableProps = ['getValue1'];
 
 class Form extends Component {
+    constructor(){
+        super();
+        this.state = {
+            value : 'form的value'
+        }
+    }
+
     render() {
-        console.log(this.props.children);
         return (
-            <form {...this.props}>
-                {this.props.children}
-            </form>
+            <div>
+                <form>
+                    {this.props.children}
+                </form>
+            </div>
         )
     }
 }
 
-export default Form;
+export default removePropsHoc(Form , []);

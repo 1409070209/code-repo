@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 function InputHoc(Input) {
     return class extends Component {
         constructor(){
@@ -9,14 +10,25 @@ function InputHoc(Input) {
             }
         }
         onChange(e){
-            console.log(e.target.value);
             this.setState({
                 value: e.target.value
             })
         }
+        keyUp(e){
+            const {onEnterUp} = this.props;
+            if (typeof onEnterUp === 'function' && e.keyCode === 13) {
+                onEnterUp(e);
+            }
+        }
+
         render(){
             return (
-                <Input {...this.props} value={this.state.value} onChange={this.onChange.bind(this)} />
+                <Input
+                        {...this.props}
+                        value={this.state.value}
+                        onChange={this.onChange.bind(this)}
+                        onKeyUp={this.keyUp.bind(this)}
+                />
             )
         }
     }
