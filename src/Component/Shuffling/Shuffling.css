@@ -1,0 +1,13 @@
+.Shuffling{
+    height: 100px;
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+}
+.Shuffling li{
+    width: 100%;
+    height: 100%;
+    border: 1px solid white;
+    transition: left 0.5s;
+    position: absolute;
+}
