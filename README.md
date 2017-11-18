@@ -1,5 +1,10 @@
 **这是一个个人的代码仓库**
 
+
+图片轮播组件：
+
+https://www.kancloud.cn/lei1142908626/demo/455415
+
 主要分为两个部分：
 
     1： DEMO类，现在已完成ReactRouter的Link组件的实现原理，javascript事件机制两个Demo
