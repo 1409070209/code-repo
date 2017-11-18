@@ -33,6 +33,8 @@
         发现组件轮播速度果然变成了0.1s。从而实现了可配置的修改轮播速度的特点
 
 
+
+
 2. API列表
 
 
@@ -41,6 +43,19 @@
             startOffset				0						默认第一个显示第0个元素
             startZIndex				0						列表的z-index的css属性
             onSlide				空函数				发生change的回调，入参为当前显示元素的下表
+
+
+Demo如下：
+~~~
+
+				<Shuffling startOffset='1' startZIndex='1' className='shuffling' onSlide={this.change.bind(this)}>
+                    <Card value='1'/>
+                    <Card value='12'/>
+                    <Card value='123'/>
+                    <Card value='1234'/>
+                    <Card value='12345'/>
+                </Shuffling>
+~~~
 
 
 3. 与图片懒加载组件共同配合使用开发懒加载模式的图片轮播组件(未开发)
