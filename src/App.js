@@ -1,25 +1,38 @@
 import React, {Component} from 'react';
 import './App.css';
 import Shuffling from "./Component/Shuffling/Shuffling";
-import Card from "./Component/Card/Card";
+import ImageLoad from "./Component/ImageLoad/ImageLoad";
+import Key from "./Demo/Key/Key";
+import Item from "./Demo/Key/Item/Item";
 
+const itemList = [
+    <Item index='1'/>,
+    <Item index='2'/>,
+    <Item index='3'/>,
+    <Item index='4'/>
+];
 class App extends Component {
     constructor(){
         super();
+        this.state = {
+            state: ''
+        }
     }
-    change(e) {
-        console.log(e);
+    click(e) {
+        itemList.unshift(<Item index='5'/>);
+        this.setState({
+            state:'1'
+        })
     }
     render() {
         return (
             <div className='App'>
-                <Shuffling startOffset='1' startZIndex='1' className='shuffling' onSlide={this.change.bind(this)}>
-                    <Card value='1'/>
-                    <Card value='12'/>
-                    <Card value='123'/>
-                    <Card value='1234'/>
-                    <Card value='12345'/>
-                </Shuffling>
+                <Key>
+                    {
+                        itemList
+                    }
+                </Key>
+                <button onClick={this.click.bind(this)}>change list</button>
             </div>
         );
     }
