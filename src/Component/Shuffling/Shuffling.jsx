@@ -2,13 +2,8 @@ import React, {Component} from 'react';
 import Card from "../Card/Card";
 import './Shuffling.css';
 import Util from "../util";
-const cardList = [
-    <Card value='123'/>,
-    <Card value='1234'/>,
-    <Card value='12345'/>,
-    <Card value='123456'/>,
 
-];
+
 class Shuffling extends Component {
     constructor(){
         super();
@@ -16,17 +11,19 @@ class Shuffling extends Component {
             count: 0
         };
     }
-    static defaultProps(){
-        return {
+    static defaultProps = {
             width: '100%',
             startOffset:0,
-            startZIndex:1
-        }
-    }
+            startZIndex:1,
+            className: '',
+            onSlide: ()=>{}
+    };
     click(e){
         this.setState({
             count:this.state.count+1
-        })
+        });
+        const index = (this.props.startOffset - this.state.count) % this.props.children.length
+        this.props.onSlide(index);
     }
     componentDidMount(){
         this.setState({
@@ -34,9 +31,8 @@ class Shuffling extends Component {
         });
         // setInterval(this.click.bind(this),1000);
     }
-    getLeft(index){
+    getLeft(index , length){
         const startOffset = parseInt(this.props.startOffset);
-        const length = cardList.length;
         const thisOffset = (index-this.state.count-startOffset) % length;
         return thisOffset < 0-startOffset
                     ?(length+thisOffset)
@@ -45,26 +41,24 @@ class Shuffling extends Component {
     render() {
         const {width} = this.props;
         const startZIndex = parseInt(this.props.startZIndex);
-        console.log(startZIndex);
         const widthNum = Util.getNum(width);
         const fix = Util.getFix(width);
 
+        const cardList = this.props.children;
         return (
             <div>
-                <ul className='clear Shuffling'>
+                <ul className={this.props.className+' clear Shuffling '}>
                     {
                         cardList.map((item , index)=>{
-                            const leftNum = this.getLeft(index);
-                            const nextLeftNum = this.getLeft(index+1);
+                            const leftNum = this.getLeft(index , cardList.length);
+                            const nextLeftNum = this.getLeft(index+1,cardList.length);
                             return(
                                 <li className='float-left'
                                     style={{
                                         left: leftNum*widthNum+fix,
-                                        width: width,
                                         zIndex : startZIndex + nextLeftNum
                                     }}
                                     key={index}>
-
                                     {item}
                                 </li>
                             )
